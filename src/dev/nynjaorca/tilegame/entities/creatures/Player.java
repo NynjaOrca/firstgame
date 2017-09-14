@@ -11,6 +11,10 @@ import dev.nynjaorca.tilegame.gfx.Assets;
 
 public class Player extends Creature{
 	
+	private float gravity = 0.5f;
+	private final float MAX_SPEED = 10.0f;
+	
+	
 	//Animations
 	private Animation animDown, animUp, animLeft, animRight;
 	
@@ -22,6 +26,9 @@ public class Player extends Creature{
 		bounds.y = 24;
 		bounds.width = 32;
 		bounds.height = 36;
+//		xMove = 0;
+//		yMove = 0;
+		
 		
 		//animations
 		animDown = new Animation(250, Assets.player_down);
@@ -32,6 +39,8 @@ public class Player extends Creature{
 
 	@Override
 	public void tick() {
+		xMove = 0;
+		
 		//Animations
 		animDown.tick();
 		animUp.tick();
@@ -45,28 +54,37 @@ public class Player extends Creature{
 	}
 	
 	private void getInput() {
-		xMove = 0;
-		yMove = 0;
 		
-		if(handler.getKeyManager().up)
-			yMove = -speed;
-		if(handler.getKeyManager().down)
-			yMove = speed;
+		//gravity
+		if(falling || jumping) {
+			y += yMove;
+			yMove += gravity;
+			if(yMove > MAX_SPEED) {
+				yMove = MAX_SPEED;
+			}
+		}
+		
+//		if(handler.getKeyManager().up)
+//			yMove = -speed;
+//		if(handler.getKeyManager().down)
+//			yMove = speed * 2;
 		if(handler.getKeyManager().left)
 			xMove = -speed;
 		if(handler.getKeyManager().right)
 			xMove = speed;
-
+		if(handler.getKeyManager().jump)
+			yMove = -speed;
 	}
+	
 
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), 
 									(int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 	
-//		g.setColor(Color.red);
-//		g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
-//					(int) (y + bounds.y - handler.getGameCamera().getyOffset()) , bounds.width, bounds.height);
+		g.setColor(Color.red);
+		g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
+					(int) (y + bounds.y - handler.getGameCamera().getyOffset()) , bounds.width, bounds.height);
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {

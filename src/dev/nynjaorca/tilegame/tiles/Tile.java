@@ -1,6 +1,7 @@
 package dev.nynjaorca.tilegame.tiles;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Tile {
@@ -10,10 +11,9 @@ public class Tile {
 	public static Tile[] tiles = new Tile[256];
 	public static Tile grassTile = new GrassTile(0);
 	public static Tile spikeTile = new SpikeTile(1);
-	
 	//CLASS
 	
-	public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
+	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
 	protected BufferedImage texture;
 	protected final int id;

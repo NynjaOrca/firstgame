@@ -26,12 +26,6 @@ public class World {
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 64, 64));
-		entityManager.addEntity(new Icicle(handler, 192, 256));
-		entityManager.addEntity(new Icicle(handler, 192, 320));
-		entityManager.addEntity(new Icicle(handler, 640, 384));
-		entityManager.addEntity(new Icicle(handler, 704, 384));
-		entityManager.addEntity(new Icicle(handler, 256, 576));
-		entityManager.addEntity(new Icicle(handler, 320, 576));
 		
 		loadWorld(path);
 		

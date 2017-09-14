@@ -1,0 +1,4 @@
+I'm pretty new to Java and I found your tutorial the most helpful out of any tutorial I've seen (out of like 5 or 6). 
+So I got through all of what you had available for BEGINNER GAME PROGRAMMING and ended up wanting to do more. 
+I've found many discussions and examples on how to implement gravity in a 2D environment but the way the source code is 
+set up makes it hard to implement. 
