@@ -1,0 +1,13 @@
+ANY CHANGES MADE ON THIS BRANCH MUST BE DATED AND INCLUDE YOUR USERNAME ALONG WITH A DESCRIPTION OF CHANGES MADE.
+
+Date: Sep. 13, 2017
+Name: NynjaOrca
+
+Changes: Added GRAVITY; 
+	 Made some changes to tile sizes that can be easily reverted from the TILE abstract class;
+	 The changes made to tile sizes required me to make changes to the world map. So now the map
+	 is basically an arena surrounded by 'solid' blocks and filled with 'non-solid' blocks with
+	 one pillar of solids to test collision on.;
+	 Some issues with collision include MOVING LEFT. That may be the only thing because IF you are
+	 MOVING LEFT and trying to JUMP, the character gets pushed below the 'solid' block it's standing on.
+	 Hopefully resolving the left bounds issue fixes this problem as well.
